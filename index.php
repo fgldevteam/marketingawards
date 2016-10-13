@@ -6,7 +6,7 @@
     <head>
 	<meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
+        <title>2016 Marketing Offsite Survey</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="css/bootstrap.css">
@@ -21,10 +21,15 @@
 
 
 <?php  
-$host = "calmys1db01.fglsports.dmz";
-$user = "meetingsched";
-$pass = "meetingsched";
-$db = "meetingsched";
+// $host = "calmys1db01.fglsports.dmz";
+// $user = "meetingsched";
+// $pass = "meetingsched";
+// $db = "meetingsched";
+
+$host = "127.0.0.1";
+$user = "root";
+$pass = "";
+$db = "marketingawards";
 
 
 $connection = mysqli_connect($host, $user, $pass, $db);
@@ -33,102 +38,50 @@ if (mysqli_connect_errno()) {
     exit();
 }
 
-$q = "select * from meetings";
-$result = mysqli_query($connection, $q);
 
+$q = "select * from awards";
+$awards_result = mysqli_query($connection, $q);
 
 ?>
     <body>
-            <div class="container">
+        <div class="container">
 
             <form>
               <div class="jumbotron">
-                <h1>Meet With Duncan</h1>
-     
+                <h2>2016 Marketing Offsite Survey</h2>
 
-                
+                <p>Here's your chance to recognize your fellow teammates!  For the following award categories, please select the marketing team member that you feel is most deserving.</p>
+                <p>&nbsp;</p>
 
-                <div id="regform">
-                    <small>All fields are required.</small>
-                      <div class="form-group">
-
-                        <label for="firstname" class="pull-left" id="firstnamelabel">First Name</label>
-                        <input type="text" class="form-control" id="firstname" placeholder="First Name">
-                        <br />
-                        <label for="lastname" class="pull-left" id="lastnamelabel">Last Name</label>
-                        <input type="text" class="form-control" id="lastname" placeholder="Last Name">
-                        <br />
-                        <label for="department" class="pull-left" id="departmentlabel">Department</label>
-                        <input type="text" class="form-control" id="department" placeholder="Department">
-                        <br />
-                        <label for="email" class="pull-left" id="emaillabel">Email Address</label>
-                        <input type="email" class="form-control" id="email" placeholder="Email">
-                      </div>
-
-                 </div>
-              </div>
-
-              <div class="row marketing">
-
-                <div class="row" id="meetingtimes">
-                <center>
-                <h2 id="meetingheader">Select a Time</h2>
-                </center>
                 <?php
-                while($row = $result->fetch_assoc()){
+                while($row = $awards_result->fetch_assoc()){
+                ?>                    
+                    <h3><?=$row['name']?></h3>
+                    <p class=""><?=$row['desc']?></p> 
 
-                    if( $row['seats'] > 0 ){
-                ?>
-
-                    <div class="col-sm-4">
-                        <div class="thumbnail">
-                            <div class="caption">
-                                <center>
-                                    <?php
-                                    if( $row['seats'] <= 0) {
-                                    ?>
-                                    <h2>FULL</h2>
-                                    <?php } else { ?>
-                                    <h2><?=$row['seats']?> seats</h2>
-                                    <?php
-                                    }
-                                    ?>
-                                    
-                                    <h4 class=""><?=$row['meeting_date']?> <br /><?=$row['meeting_time']?></h4>
-                                    <p class=""><?=$row['meeting_location']?></p> 
-                                    
-                                    <?php
-                                    if( $row['seats'] <= 0) {
-                                    ?>
-                                    <p>&nbsp;</p>
-                                    <?php } else { ?>
-                                    <p><input type="radio" name="optionsMeeting" value="<?=$row['id']?>"> &nbsp; Select this meeting</p>
-                                    <?php
-                                    }
-                                    ?>
-                                    
-                                </center>
-                            </div>
-                        </div>
-                    </div>
-                        
-                <?php } 
-
+                    <select class="form-control" name="<?=$row['id']?>" id="award<?=$row['id']?>">
+                        <option value=""></option>
+                    <?php
+                        $q = "select * from people";
+                        $result = mysqli_query($connection, $q);
+                        while($row2 = $result->fetch_assoc()){
+                    ?> 
+                        <option value="<?=$row2['id'] ?>"><?=$row2['name']?></option>
+                    <?php 
+                        }
+                    ?>
+                    </select>
+                    <hr />
+                <?php 
                 } //endwhile
                 ?>
 
-                                                  
-
-                </div>                                
-
-
+                
+                <p><a id="submit" class="btn btn-lg btn-success" href="#" role="button">Send Votes</a></p> 
               </div>
 
-
-              <p><a id="submit" class="btn btn-lg btn-success" href="#" role="button">Send Registration</a></p> 
-              
-            </div>
-
+             
+        </div>                                
 
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
         <script src="js/bootstrap.js"></script>
