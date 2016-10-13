@@ -46,13 +46,14 @@ $awards_result = mysqli_query($connection, $q);
     <body>
         <div class="container">
 
-            <form>
+            
               <div class="jumbotron">
                 <h2>2016 Marketing Offsite Survey</h2>
 
                 <p>Here's your chance to recognize your fellow teammates!  For the following award categories, please select the marketing team member that you feel is most deserving.</p>
                 <p>&nbsp;</p>
 
+                <form id="regform">
                 <?php
                 while($row = $awards_result->fetch_assoc()){
                 ?>                    
@@ -78,6 +79,8 @@ $awards_result = mysqli_query($connection, $q);
 
                 
                 <p><a id="submit" class="btn btn-lg btn-success" href="#" role="button">Send Votes</a></p> 
+
+                </form>
               </div>
 
              

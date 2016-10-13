@@ -7,63 +7,75 @@ $(document).ready(function() {
 	
 	$("#submit").click(function(){					   				   
 		$(".error").hide();
+
 		var hasError = false;
 		var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
 		
-		var fnameVal = $("#firstname").val();
-		var lnameVal = $("#lastname").val();
-		var emailVal = $("#email").val();
-		var deptVal = $("#department").val();
-		var selected_meeting = $("input:radio[name ='optionsMeeting']:checked").val();
-		
-		
+
+		var award1 = $("#award1").val();
+		var award2 = $("#award2").val();
+		var award3 = $("#award3").val();
+		var award4 = $("#award4").val();
+		var award5 = $("#award5").val();
+		var award6 = $("#award6").val();
+		var award7 = $("#award7").val();
+		var award8 = $("#award8").val();
+		var award9 = $("#award9").val();
+		var award10 = $("#award10").val();
+
 		// console.log(fitnessVal);
 		//validation
-		if(fnameVal == '') {
-			$("#firstnamelabel").css('color', '#c00');
-			$("#firstnamelabel").after('<p class="error">Please enter your first name.</p>');
+		if(award1 == '') {
+			$("#award1").before('<p class="error">Forgot this one...</p>');
 			hasError = true;
-			$(window).scrollTop(0);
 		}
 
-		if(lnameVal == '') {
-			$("#lastnamelabel").css('color', '#c00');
-			$("#lastnamelabel").after('<p class="error">Please enter your last name.</p>');
+		if(award2 == '') {
+			$("#award2").before('<p class="error">Forgot this one...</p>');
 			hasError = true;
-			$(window).scrollTop(0);
 		}
 
-		if(emailVal == '') {
-			$("#emaillabel").css('color', '#c00');
-			$("#emaillabel").after('<p class="error">Please enter your email.</p>');
+		if(award3 == '') {
+			$("#award3").before('<p class="error">Forgot this one...</p>');
 			hasError = true;
-			$(window).scrollTop(0);
 		}
-		else if(!emailReg.test(emailVal)) {	
-			$("#emaillabel").after('<p class="error">Please enter a valid email address.</p>');
+
+		if(award4 == '') {
+			$("#award4").before('<p class="error">Forgot this one...</p>');
+			hasError = true;
+		}
+
+		if(award5 == '') {
+			$("#award5").before('<p class="error">Forgot this one...</p>');
+			hasError = true;
+		}
+
+		if(award6 == '') {
+			$("#award6").before('<p class="error">Forgot this one...</p>');
+			hasError = true;
+		}
+
+		if(award7 == '') {
+			$("#award7").before('<p class="error">Forgot this one...</p>');
+			hasError = true;
+		}
+
+
+		if(award8 == '') {
+			$("#award8").before('<p class="error">Forgot this one...</p>');
+			hasError = true;
+		}
+
+
+		if(award9 == '') {
+			$("#award9").before('<p class="error">Forgot this one...</p>');
+			hasError = true;
+		}														
+
+		if(award10 == '') {
+			$("#award10").before('<p class="error">Forgot this one...</p>');
 			hasError = true;
 		}	
-		// if(extVal == '') {
-		// 	$("#label-last").css('color', '#c00');
-		// 	hasError = true;
-		// 	$(window).scrollTop(0);
-		// }	
-		
-		if(deptVal == '') {
-			$("#departmentlabel").css('color', '#c00');
-			$("#departmentlabel").after('<p class="error">Please enter your department.</p>');
-			hasError = true;
-			$(window).scrollTop(0);
-		}	
-
-
-		if(selected_meeting === undefined){
-			$("#meetingheader").css('color', '#c00');
-			$("#meetingheader").after('<p class="error">Please select a meeting time.</p>');
-			hasError = true;
-			$(window).scrollTop(0);
-
-		}
 
 
 					
@@ -74,17 +86,22 @@ $(document).ready(function() {
 
 
 			$.post("send.php",
-   				{ firstname: fnameVal,
-   				  lastname: lnameVal,
-   				  department: deptVal,   				  
-   				  email : emailVal, 
-   				  selected_meeting: selected_meeting
+   				{ award1: award1,
+   				  award2: award2,
+   				  award3: award3,
+   				  award4: award4,
+   				  award5: award5,
+   				  award6: award6,
+   				  award7: award7,
+   				  award8: award8,
+   				  award9: award9,
+   				  award10: award10
    				  
    				},
    					function(data){
-   						$("#meetingtimes").hide();
+   	
    						$("#regform").hide();
-   						$("#regform").after("<h3>Thank You</h3><p>Your registration has been received.</p>");											
+   						$("#regform").after("<h3>Thank You</h3><p>Your votes have been received.</p>");											
    						
 										  												
 						
