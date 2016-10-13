@@ -26,9 +26,9 @@
 // $pass = "meetingsched";
 // $db = "meetingsched";
 
-$host = "127.0.0.1";
-$user = "root";
-$pass = "";
+$host = "calmys1db01.fglsports.dmz";
+$user = "marketingawards";
+$pass = "marketingawards";
 $db = "marketingawards";
 
 
