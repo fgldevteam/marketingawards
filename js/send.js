@@ -86,16 +86,16 @@ $(document).ready(function() {
 
 
 			$.post("send.php",
-   				{ award1: award1,
-   				  award2: award2,
-   				  award3: award3,
-   				  award4: award4,
-   				  award5: award5,
-   				  award6: award6,
-   				  award7: award7,
-   				  award8: award8,
-   				  award9: award9,
-   				  award10: award10
+   				{ 1: award1,
+   				  2: award2,
+   				  3: award3,
+   				  4: award4,
+   				  5: award5,
+   				  6: award6,
+   				  7: award7,
+   				  8: award8,
+   				  9: award9,
+   				  10: award10
    				  
    				},
    					function(data){
