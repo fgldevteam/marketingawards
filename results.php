@@ -27,6 +27,7 @@ for ($i = 1; $i <= 10; $i++) {
 
 		echo "<h2>" . $awards_result['award name']  ."</h2>";
 
+		print_r($awards_result);
 		// while($row = $awards_result->fetch_assoc()){
 
 		// }
