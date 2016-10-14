@@ -25,7 +25,7 @@ for ($i = 1; $i <= 10; $i++) {
 	
 		$awards_result = mysqli_query($connection, $q);
 
-		echo "<h2>" . $awards_result['award name']  ."</h2>"
+		echo "<h2>" . $awards_result['award name']  ."</h2>";
 
 		// while($row = $awards_result->fetch_assoc()){
 
